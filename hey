@@ -1,0 +1,18 @@
+public class hitest
+{
+	public static void main(String [] args)
+	{
+		int x = In.readInt();
+		hi t = new hi(x);
+		while (x <= 0 || x%2 == 0) 
+		{
+			System.out.println("Bitte ungerade Zahl grösser null");
+			x = In.readInt();
+			t = new hi(x);
+		}
+			t.display_triangle();
+			System.out.println();
+			System.out.println("Anzahl der Sterne: " + t.get_stars());
+			System.out.println("Anzahl der Punkte: " + t.get_dots());
+	}
+}
