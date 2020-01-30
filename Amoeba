@@ -1,0 +1,117 @@
+public class Amoeba
+{
+	private boolean female;
+	private int size;
+
+	public Amoeba(boolean female)
+	{
+		if(female == true)
+		{
+			this.female = true;
+			size = 1;
+		}
+		else
+		{
+			this.female = false;
+			size = 1;
+		}
+	}
+	
+	public boolean isFemale()
+	{
+		if(female)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public int getSize()
+	{
+		return size;
+	}
+
+	public void setSize(int input)
+	{
+		if(input < 1)
+		{
+			System.out.println("nicht negativ");
+		}
+		size = input;
+	}
+
+	public Amoeba feed()
+	{
+		this.size++;
+		return this;
+	}
+	
+	public Amoeba hunger()
+	{
+		if( size == 1)
+		{
+			return this;
+		}
+		else
+		{
+			this.size--;
+			return this;	
+		}
+	}
+
+	public Amoeba split()
+	{
+		if(size < 5)
+		{
+			return null;
+		}
+                Amoeba neu = new Amoeba(this.isFemale());
+		neu.setSize(this.getSize()/2);			//neu.getSize()=this,getSize()/2
+		this.setSize(this.getSize()-neu.getSize());
+		return neu;
+	}
+
+	public Amoeba join(Amoeba other)
+	{
+		if(this.isFemale() == other.isFemale() || this.getSize() == other.getSize())
+		{
+			return null;
+		}
+		
+		if(this.getSize() < other.getSize())
+		{
+			Amoeba neu = new Amoeba(other.isFemale());
+			return neu;
+		}
+		else
+		{
+			Amoeba neu = new Amoeba(this.isFemale());
+			return neu;
+		}
+	}
+	
+	public Amoeba attack(Amoeba other)
+	{
+		if(this.isFemale() || other.isFemale() || this.getSize() == other.getSize())
+		{
+		}
+		else
+		{
+			if(this.getSize() < other.getSize())
+			{
+				other.setSize(other.size + this.getSize()-1);
+				this.setSize(1);
+			}
+		
+			if(this.getSize() > other.getSize())
+			{
+				this.setSize(this.size + other.getSize()-1);
+				other.setSize(1);
+			}
+		}
+		return this;
+	}
+}
