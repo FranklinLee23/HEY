@@ -1,6 +1,6 @@
 public class Amoeba
 {
-	private boolean female;
+	private final boolean female;
 	private int size;
 
 	public Amoeba(boolean female)
