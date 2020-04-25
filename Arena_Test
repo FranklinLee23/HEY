@@ -1,0 +1,44 @@
+
+
+public class Arena_Test
+{
+    public static void main(String[] args)
+    {
+        Arena arena1 = new Arena(5);
+        Arena arena2 = new Arena(10,100);
+        Arena arena3 = new Arena(15,200,300);
+        Ticketmachine ticketmachine1 = new Ticketmachine(15);
+        Ticketmachine ticketmachine2 = new Ticketmachine(20);
+
+        System.out.printf("Arena1: " + "%n" + "Ticketpreis: " + arena1.getTicketPrice() + "%n%n");
+        
+	System.out.printf("Arena2: " + "%n" + "Ticketpreis: " + arena2.getTicketPrice() + "%n" + "numberSeats: " + arena2.getNumberSeats() + "%n%n");
+        
+	System.out.printf("Arena3: " + "%n" + "Ticketpreis: " + arena3.getTicketPrice() + "%n" +"numberSeats: " + arena3.getNumberSeats() + "%n" + "numberSeatsCl: " +                              arena3.getNumberSeatsCl() + "%n%n");
+	
+	System.out.printf("Ticketmachine1:Preis " + ticketmachine1.getticketPrice() + "%n");
+	
+	System.out.printf("Ticketmachine2:Preis " + ticketmachine2.getticketPrice() + "%n%n");
+
+        arena3.assignTicketMachine(ticketmachine1);
+	System.out.println("Zu arena3 wird ticketmachine1 zugeteilt");
+        System.out.println("Passt der preis von ticketmachine1 zu Arena3 ? " + arena3.check_synchr_TicketPrice());
+
+        System.out.println();
+	arena2.assignTicketMachine(ticketmachine2);
+	System.out.println("Zu arena2 wird ticketmachine2 zugeteilt");
+	System.out.println("Passt der preis von ticketmachine2 zu Arena2 ? " + arena2.check_synchr_TicketPrice());
+
+        System.out.println();
+	System.out.println("Kopie von Arena 3");
+	Arena arena4 = new Arena(arena3);
+
+	System.out.printf("Arena4: " + "%n" + "Ticketpreis: " + arena4.getTicketPrice() + "%n" +"numberSeats: " + arena4.getNumberSeats() + "%n" + "numberSeatsCl: " +                              arena4.getNumberSeatsCl() + "%n%n");
+       
+	System.out.println("aendern von ticketprice von arena4 auf 10");
+	arena4.setTicketPrice(10);
+        System.out.printf("Arena3: " + "%n" + "Ticketpreis: " + arena3.getTicketPrice() + "%n" + "numberSeats: " + arena3.getNumberSeats() + "%n" + "numberSeatsCl: " +                             arena3.getNumberSeatsCl() + "%n");
+       
+	System.out.printf("Arena4: " + "%n" + "Ticketpreis: " + arena4.getTicketPrice() + "%n" + "numberSeats: " + arena4.getNumberSeats() + "%n" + "numberSeatsCl: " +                             arena4.getNumberSeatsCl() + "%n");
+    }
+}
