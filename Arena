@@ -1,0 +1,81 @@
+
+public class Arena
+{
+    private int ticketPrice;
+    private int numberSeats;
+    private int numberSeatsCl;
+    private Ticketmachine ticketmachine;
+
+    public Arena(int ticketPrice)
+    {
+        this.ticketPrice = ticketPrice;
+    }
+
+    public Arena(int ticketPrice, int numberSeats)
+    {
+        this.ticketPrice = ticketPrice;
+        this.numberSeats = numberSeats;
+    }
+
+    public Arena(int ticketPrice, int numberSeats, int numberSeatsCl)
+    {
+        this.ticketPrice = ticketPrice;
+        this.numberSeats = numberSeats;
+        this.numberSeatsCl = numberSeatsCl;
+    }
+
+    public Arena(Arena original)
+    {
+        this.ticketPrice = original.getTicketPrice();
+        this.numberSeats = original.getNumberSeats();
+        this.numberSeatsCl = original.getNumberSeatsCl();
+        ticketmachine = new Ticketmachine(original.getTicketmachine());
+    }
+
+    public void assignTicketMachine(Ticketmachine ticketmachine)
+    {
+        if(this.ticketmachine == null)
+        {
+            this.ticketmachine = new Ticketmachine(ticketmachine.getticketPrice());
+        }
+    }
+
+    public boolean check_synchr_TicketPrice()
+    {
+        return this.getTicketPrice() == ticketmachine.getticketPrice();
+    }
+
+
+
+    public int getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(int ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
+
+    public int getNumberSeats() {
+        return numberSeats;
+    }
+
+    public void setNumberSeats(int numberSeats) {
+        this.numberSeats = numberSeats;
+    }
+
+    public int getNumberSeatsCl() {
+        return numberSeatsCl;
+    }
+
+    public void setNumberSeatsCl(int numberSeatsCl) {
+        this.numberSeatsCl = numberSeatsCl;
+    }
+
+    public Ticketmachine getTicketmachine() {
+        return ticketmachine;
+    }
+
+    public void setTicketmachine(Ticketmachine ticketmachine) {
+        this.ticketmachine = ticketmachine;
+    }
+}
