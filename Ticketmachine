@@ -1,0 +1,118 @@
+
+
+public class Ticketmachine
+{
+    public int ticketPrice;
+    public int alreadyPaid;
+    public int totalSum;
+
+    public Ticketmachine(int preis)
+    {
+        this.ticketPrice = preis;
+        this.alreadyPaid = 0;
+        this.totalSum = 0;
+    }
+
+    public Ticketmachine(Ticketmachine original)
+    {
+        Ticketmachine kopie = new Ticketmachine(original.getticketPrice());
+    }
+
+    public int getticketPrice()
+    {
+        return ticketPrice;
+    }
+
+    public int getalreadyPaid()
+    {
+        return alreadyPaid;
+    }
+
+    public int gettotalSum()
+    {
+        return totalSum;
+    }
+
+    public void insertMoney(int amount)
+    {
+
+        alreadyPaid = getalreadyPaid() + amount;
+    }
+
+    public void printTicket()
+    {
+        totalSum = this.gettotalSum() + this.getticketPrice();
+        alreadyPaid = this.getalreadyPaid() - this.getticketPrice();
+        System.out.println("###################");
+        System.out.println("#Erstsemesterfeier#");
+        System.out.println("######Ticket#######");
+        System.out.println("#####" + " " + this.getticketPrice() + " " + "Cent" + " " + "#####");
+        System.out.println("###################");
+
+    }
+
+    public String resetAlreadyPaid()
+    {
+        int rest = this.getalreadyPaid();
+        String text = "Ausgabe: Restgeld" + " " + rest;
+        alreadyPaid = 0;
+        return text;
+    }
+
+    public void processTicket()
+    {
+        //boolean pricePaid = !(this.getalreadyPaid() < this.getticketPrice()) ;
+        boolean further = true;
+        System.out.print("Bitte Muenze einwerfen ");
+        int eingabe = In.readInt();
+        this.insertMoney(eingabe);
+
+        do
+        {
+
+            boolean pricePaid = !(this.getalreadyPaid() < this.getticketPrice()) ;
+
+
+
+			/*if(this.getalreadyPaid() < this.getticketPrice())
+			{
+				pricePaid = false;
+			}*/
+
+            while(!pricePaid)                   //checkt ob genug Geld
+            {
+                System.out.print("Bitte Muenze einwerfen ");
+                int neueingabe = In.readInt();
+                this.insertMoney(neueingabe);
+                if(this.getalreadyPaid() >= this.getticketPrice())
+                {
+                    pricePaid = true;
+                }
+
+            }
+
+            this.printTicket();
+            System.out.println();
+            System.out.println("Wollen Sie weiter Tickets ? (j/n)");
+            char decision = In.readChar();
+
+            if (decision == 'j')				// macht normal weiter
+            {
+
+            }
+
+            if (decision == 'n')				//Abbruch
+            {
+                int gesamtsumme = this.gettotalSum();
+                System.out.println(this.resetAlreadyPaid());
+                System.out.println("Gesamtsumme" + " " + gesamtsumme);
+                further = false;
+                return;
+            }
+        }
+        while(further);
+
+
+    }
+
+}
