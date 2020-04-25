@@ -1,0 +1,90 @@
+
+public class Student1 {
+
+    private String vollstaendiger_Name;
+    private String telefonnummer;
+    private String sprache;
+    private Adresse1 adr1;
+
+    public Student1(String vollstaendiger_Name,String telefonnummer,String sprache)
+    {
+        this.vollstaendiger_Name = vollstaendiger_Name;
+        this.telefonnummer = telefonnummer;
+        this.sprache = sprache;
+    }
+
+    public Student1(String vollstaendiger_Name, String telefonnummer, String sprache, String straße, String                     hausnummer,String ort, int postleitzahl)
+    {
+        this(vollstaendiger_Name,telefonnummer,sprache);
+        adr1 = new Adresse1(straße,hausnummer,ort,postleitzahl);
+    }
+
+    public String getVollstaendiger_Name() 
+    {
+        return vollstaendiger_Name;
+    }
+
+    public void setVollstaendiger_Name(String vollstaendiger_Name) 
+    {
+        this.vollstaendiger_Name = vollstaendiger_Name;
+    }
+
+    public String getTelefonnummer() 
+    {
+        return telefonnummer;
+    }
+
+    public void setTelefonnummer(String telefonnummer) 
+    {
+        this.telefonnummer = telefonnummer;
+    }
+
+    public String getSprache() 
+    {
+        return sprache;
+    }
+
+    public void setSprache(String sprache) 
+    {
+        this.sprache = sprache;
+    }
+
+    public Adresse1 getAdr1() 
+    {
+        return adr1;
+    }
+
+    public void setAdr1(Adresse1 adr1) 
+    {
+        this.adr1 = adr1;
+    }
+
+     String getDetails()
+    {
+        if(sprache.equals("ES"))
+        {
+	    String s = "Name:\n"+ getVollstaendiger_Name() + "\n" + "N\u00FAmero de tel\u00E9fono: " +                               getTelefonnummer() + "\n";
+           
+            if(adr1!=null)
+            {
+		return s + adr1.toString();
+            }
+            else
+            {
+                return s;
+            }
+        }
+        else
+        {
+	    String s = "Name:" + "\n" + getVollstaendiger_Name() + "\n" + "Telefonnummer: " +                                        getTelefonnummer() + "\n";
+            if(adr1!=null)
+            {
+                return s + adr1.toString();
+            }
+            else
+            {
+                return s;
+            }
+        }
+    }
+}
