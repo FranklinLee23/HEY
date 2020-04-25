@@ -1,0 +1,29 @@
+
+import java.util.*;
+public class Uebung1
+{
+    public static void main(String[] args)
+    {
+        Student1 student1 = new Student1("Marc-Andr\u00E9 ter Stegen", "902189900" , "ES",
+                "Carrer d'Ar\u00EDstides Maillol", "23", "Barcelona, Espa\u00F1a", 8028);
+        Student1 student2 = new Student1("Franz, Kaiser und Lichtgestalt", "1234", "DE");
+	
+	StringTokenizer stu1 = new StringTokenizer(student1.getDetails());
+        StringTokenizer stu2 = new StringTokenizer(student2.getDetails());
+
+
+        System.out.printf("%n%n" + "Student1");
+        System.out.printf("%n" + student1.getDetails() + "%n%n");
+        while(stu1.hasMoreTokens())
+        {
+            System.out.println(stu1.nextToken());
+        }
+        
+	System.out.printf("%n%n" + "Student2");
+        System.out.printf("%n" + student2.getDetails() + "%n%n");
+        while(stu2.hasMoreTokens())
+        {
+            System.out.println(stu2.nextToken());
+        }
+    }
+}
